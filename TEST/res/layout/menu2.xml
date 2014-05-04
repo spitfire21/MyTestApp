@@ -1,0 +1,32 @@
+<menu xmlns:android=
+      "http://schemas.android.com/apk/res/android" >
+     <item
+        android:id="@+id/menu_load"
+        android:icon="@drawable/ic_action_copy"
+        android:orderInCategory="200"
+        android:showAsAction="always"
+        android:title="Load"/>
+   
+   
+   <item
+      android:id="@+id/overflow"
+      android:icon="@drawable/ic_action_overflow"
+      android:showAsAction="always"
+      android:text = "Show Items"
+      android:orderInCategory="300">
+     <menu>
+      <item
+            android:id="@+id/graph"
+            android:showAsAction="never"
+            android:title="Graph"
+            />
+
+
+        
+    </menu>
+      
+      </item>
+   
+
+
+</menu>

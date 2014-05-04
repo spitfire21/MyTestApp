@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/notepad_background"
+    android:orientation="vertical"
+    android:paddingTop="35dp" >
+
+    <EditText
+        android:id="@+id/editWorkoutName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/editWorkoutDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" />
+
+    <Button
+        android:id="@+id/Save"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:background="@drawable/button1"
+        android:fadingEdge="horizontal"
+        android:text="Save"
+        android:color="#FAFAD2" />
+
+</LinearLayout>
