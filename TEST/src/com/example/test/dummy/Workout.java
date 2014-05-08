@@ -9,17 +9,23 @@ public String id;
 public String Days;
 public List<Lift> workout = new ArrayList<Lift>();
 public int numWeeks;
+public long startDate;
+public long endDate;
 
-public Workout (int number, String id, String days, int numWeeks){
+public Workout (int number, String id, String days, int numWeeks, long startDate, long endDate){
 	this.number = number;
 	this.id = id;
 	this.Days = days;
 	this.numWeeks = numWeeks;
+	this.startDate = startDate;
+	this.endDate = endDate;
 }
-public Workout (int number, String id, String days){
+public Workout (int number, String id, String days,long startDate, long endDate){
 	this.number = number;
 	this.id = id;
 	this.Days = days;
+	this.startDate = startDate;
+	this.endDate = endDate;
 }
 public void addLift(Lift a){
 	
@@ -39,6 +45,12 @@ public int getNumber(){
 }
 public String getDays(){
 	return this.Days;
+}
+public long getStart(){
+	return this.startDate;
+}
+public long getEnd(){
+	return this.endDate;
 }
 
 }

@@ -138,6 +138,7 @@ public class CalendarView extends Activity {
 		public void run() {
 			ArrayList<Integer> ids = new ArrayList<Integer>();
 			items.clear();
+			int day = month.get(Calendar.DAY_OF_MONTH);
 			
 			// format random values. You can implement a dedicated class to provide real values
 			for(int y= 0; y < workouts.size(); y++){
@@ -145,16 +146,22 @@ public class CalendarView extends Activity {
 				Random r = new Random();
 				//workouts.get(0).getDays().contains(month.get(Calendar.DAY_OF_WEEK)+=i-1%7+"");
 				
-				if(workouts.get(y).getDays().contains((month.get(Calendar.DAY_OF_WEEK) + i - 2)%7+""))
+				if(workouts.get(y).getDays().contains((month.get(Calendar.DAY_OF_WEEK) + i - 2)%7+"")
+						&& workouts.get(y).getStart() <= month.getTimeInMillis() && workouts.get(y).getEnd() >= month.getTimeInMillis())
 				{
 					ids.add(workouts.get(y).getNumber()%6);
 					items.add(Integer.toString(i));
+					//if(month.get(Calendar.DAY_OF_MONTH) < 30){
+					//month.set(Calendar.DAY_OF_MONTH,month.get(Calendar.DAY_OF_MONTH)+1);
+					//}
 				}
 			}
+			//month.set(Calendar.DAY_OF_MONTH,day);
 			}
 			adapter.setID(ids);
 			adapter.setItems(items);
 			adapter.notifyDataSetChanged();
+			//month.set(Calendar.DAY_OF_MONTH,day);
 		}
 		
 	};

@@ -17,7 +17,7 @@ public class DbWorkouts extends SQLiteOpenHelper{
     private static final int DATABASE_VERSION = 1;
  
     // Database Name
-    private static final String DATABASE_NAME = "liftManagers13";
+    private static final String DATABASE_NAME = "liftManagers14";
  
     // Contacts table name
     private static final String TABLE_CONTACTS = "contacts";
@@ -26,6 +26,8 @@ public class DbWorkouts extends SQLiteOpenHelper{
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
     private static final String KEY_PH_NO = "phone_number";
+    private static final String STARTDATE = "START_DATE";
+    private static final String ENDDATE = "END_DATE";
     
     private static final String TABLE_WEIGHT = "Weight";
     
@@ -55,7 +57,7 @@ public class DbWorkouts extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_CONTACTS + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
-                + KEY_PH_NO + " TEXT" + ")";
+                + KEY_PH_NO + " TEXT," + STARTDATE + " LONG," + ENDDATE + " LONG" + ")";
         db.execSQL(CREATE_CONTACTS_TABLE);
         
         String CREATE_LIFTS_TABLE = "CREATE TABLE " + TABLE_LIFTS + "("
@@ -122,6 +124,8 @@ public class DbWorkouts extends SQLiteOpenHelper{
         values.put(KEY_ID, workout.getNumber());
         values.put(KEY_NAME, workout.getId()); // Contact Name
         values.put(KEY_PH_NO, workout.getDays()); // Contact Phone Number
+        values.put(STARTDATE, workout.getStart());
+        values.put(ENDDATE, workout.getEnd());
      
         // Inserting Row
         db.insert(TABLE_CONTACTS, null, values);
@@ -171,7 +175,7 @@ public class DbWorkouts extends SQLiteOpenHelper{
             cursor.moveToFirst();
      
         Workout workout = new Workout(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1), cursor.getString(2));
+                cursor.getString(1), cursor.getString(2), cursor.getLong(3), cursor.getLong(4));
         // return contact
         db.close();
         return workout;
@@ -188,7 +192,7 @@ public class DbWorkouts extends SQLiteOpenHelper{
         if (cursor.moveToFirst()) {
             do {
                 Workout workout = new Workout((Integer.parseInt(cursor.getString(0))), (cursor.getString(1))
-                		, (cursor.getString(2)));
+                		, (cursor.getString(2)), (cursor.getLong(3)), (cursor.getLong(4)));
                 
                 // Adding contact to list
                 workoutList.add(workout);
